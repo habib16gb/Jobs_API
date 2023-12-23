@@ -1,0 +1,200 @@
+openapi: 3.0.0
+info:
+  title: Jobs API
+  contact: {}
+  version: "1.0"
+servers:
+  - url: http://localhost:3000/api/v1
+    variables: {}
+paths:
+  /jobs:
+    get:
+      tags:
+        - Jobs
+      summary: Get All Jobs
+      operationId: GetAllJobs
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+    post:
+      tags:
+        - Jobs
+      summary: Create On Job
+      operationId: CreateOnJob
+      parameters: []
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/CreateOnJobRequest"
+                - example:
+                    company: AWS2
+                    position: England
+                    Status: interview
+            example:
+              company: AWS2
+              position: England
+              Status: interview
+        required: true
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /jobs/hhhhh:
+    get:
+      tags:
+        - Jobs
+      summary: Get One Job
+      operationId: GetOneJob
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /jobs/6585c81db0f22203f7edc4a9:
+    delete:
+      tags:
+        - Jobs
+      summary: Delete One Job
+      operationId: DeleteOneJob
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Login
+      operationId: Login
+      parameters: []
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/LoginRequest"
+                - example:
+                    password: amine
+                    email: amine@gmail.com
+            example:
+              password: amine
+              email: amine@gmail.com
+        required: true
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security: []
+  /auth/register:
+    post:
+      tags:
+        - Auth
+      summary: Register
+      operationId: Register
+      parameters: []
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/RegisterRequest"
+                - example:
+                    name: habib2
+                    password: habib
+                    email: habib2@gmail.com
+            example:
+              name: habib2
+              password: habib
+              email: habib2@gmail.com
+        required: true
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security: []
+components:
+  schemas:
+    CreateOnJobRequest:
+      title: CreateOnJobRequest
+      required:
+        - company
+        - position
+        - Status
+      type: object
+      properties:
+        company:
+          type: string
+        position:
+          type: string
+        Status:
+          type: string
+      example:
+        company: AWS2
+        position: England
+        Status: interview
+    LoginRequest:
+      title: LoginRequest
+      required:
+        - password
+        - email
+      type: object
+      properties:
+        password:
+          type: string
+        email:
+          type: string
+      example:
+        password: amine
+        email: amine@gmail.com
+    RegisterRequest:
+      title: RegisterRequest
+      required:
+        - name
+        - password
+        - email
+      type: object
+      properties:
+        name:
+          type: string
+        password:
+          type: string
+        email:
+          type: string
+      example:
+        name: habib2
+        password: habib
+        email: habib2@gmail.com
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security: []
+tags:
+  - name: Misc
+    description: ""
+  - name: Jobs
+    description: ""
+  - name: Auth
+    description: ""
